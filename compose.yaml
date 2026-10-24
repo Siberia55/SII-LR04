@@ -1,0 +1,12 @@
+services:
+  video-counter:
+    build: .
+    image: sii-lr04:latest
+    working_dir: /app
+    volumes:
+      - ./data:/app/data:ro
+      - ./output:/app/output
+      - ./models:/app/models
+    environment:
+      YOLO_CONFIG_DIR: /tmp/ultralytics
+    command: ["python", "-m", "src.count_video", "--help"]
